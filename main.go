@@ -7,6 +7,7 @@ import (
 	"os/signal"
 	"path/filepath"
 
+	"github.com/drgolem/go-flac/flac"
 	"github.com/drgolem/go-mpg123/mpg123"
 	"github.com/drgolem/go-portaudio/portaudio"
 	"github.com/drgolem/simpleFilePlayer/decoders"
@@ -15,8 +16,9 @@ import (
 type FileFormatType string
 
 const (
-	FileFormat_MP3 FileFormatType = ".mp3"
-	FileFormat_OGG FileFormatType = ".ogg"
+	FileFormat_MP3  FileFormatType = ".mp3"
+	FileFormat_OGG  FileFormatType = ".ogg"
+	FileFormat_FLAC FileFormatType = ".flac"
 )
 
 type musicDecoder interface {
@@ -43,7 +45,7 @@ func main() {
 	ext := filepath.Ext(fileName)
 	fileFormat := FileFormatType(ext)
 	switch fileFormat {
-	case FileFormat_MP3, FileFormat_OGG:
+	case FileFormat_MP3, FileFormat_OGG, FileFormat_FLAC:
 	default:
 		fmt.Printf("Unsupported file format: %s\n", ext)
 		flag.PrintDefaults()
@@ -92,6 +94,13 @@ func main() {
 			}
 			decoder = opusDecoder
 		}
+	case FileFormat_FLAC:
+		flacDecoder, err := flac.NewFlacFrameDecoder(16)
+		if err != nil {
+			fmt.Printf("ERR: %v\n", err)
+			return
+		}
+		decoder = flacDecoder
 	default:
 		fmt.Printf("Unsupported file format: %s\n", ext)
 		flag.PrintDefaults()

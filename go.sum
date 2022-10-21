@@ -1,4 +1,6 @@
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
+github.com/drgolem/go-flac v0.0.0-20221021082237-4f25709ad47a h1:5u2H3SECOor1RdjhKkEyJBBf77wHDhvW9VEpYuk9qEQ=
+github.com/drgolem/go-flac v0.0.0-20221021082237-4f25709ad47a/go.mod h1:0jKsHSPFD+upAZ3VN7RGX06SNZWeBk61Ix8gWGU5xVw=
 github.com/drgolem/go-mpg123 v0.0.0-20221021055042-d7a776d994c8 h1:o3eHU8BS88rMLDnJ+3Yq75l7lHs40gOIzKwztwPHQ38=
 github.com/drgolem/go-mpg123 v0.0.0-20221021055042-d7a776d994c8/go.mod h1:lTMlKJyyCJBmvv5HlGsnCFUJl8h0ois6/5b78asZ0G4=
 github.com/drgolem/go-ogg v0.0.0-20221021062348-a1b6f0a17f55 h1:H/L2PsiqiDBTYfbL50fFW6fV0sVc5V1/NztszeAehVs=

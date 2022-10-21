@@ -1,7 +1,7 @@
 
 music file player example
 
-Supported: MP3, OGG Vorbis, OGG Opus
+Supported: MP3, OGG Vorbis, OGG Opus, FLAC
 
 Build:
 ```
