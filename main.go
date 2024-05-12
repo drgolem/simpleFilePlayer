@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/signal"
 	"path/filepath"
+	"syscall"
 
 	"github.com/drgolem/go-flac/flac"
 	"github.com/drgolem/go-mpg123/mpg123"
@@ -56,7 +57,7 @@ func main() {
 	fmt.Printf("Press Ctrl-C to stop.\n")
 
 	sig := make(chan os.Signal, 1)
-	signal.Notify(sig, os.Interrupt, os.Interrupt)
+	signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM)
 
 	var decoder musicDecoder
 
