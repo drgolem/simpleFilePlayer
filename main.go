@@ -20,6 +20,7 @@ const (
 	FileFormat_MP3  FileFormatType = ".mp3"
 	FileFormat_OGG  FileFormatType = ".ogg"
 	FileFormat_FLAC FileFormatType = ".flac"
+	FileFormat_WAV  FileFormatType = ".wav"
 )
 
 type musicDecoder interface {
@@ -46,7 +47,7 @@ func main() {
 	ext := filepath.Ext(fileName)
 	fileFormat := FileFormatType(ext)
 	switch fileFormat {
-	case FileFormat_MP3, FileFormat_OGG, FileFormat_FLAC:
+	case FileFormat_MP3, FileFormat_OGG, FileFormat_FLAC, FileFormat_WAV:
 	default:
 		fmt.Printf("Unsupported file format: %s\n", ext)
 		flag.PrintDefaults()
@@ -102,6 +103,13 @@ func main() {
 			return
 		}
 		decoder = flacDecoder
+	case FileFormat_WAV:
+		wavDecoder, err := decoders.NewWavDecoder()
+		if err != nil {
+			fmt.Printf("ERR: %v\n", err)
+			return
+		}
+		decoder = wavDecoder
 	default:
 		fmt.Printf("Unsupported file format: %s\n", ext)
 		flag.PrintDefaults()
